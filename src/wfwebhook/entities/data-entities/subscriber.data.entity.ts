@@ -12,5 +12,5 @@ export class SubscriberEntity extends AuditableDataEntity {
     () => EventSubscriberEntity,
     (eventSubscriberEntity) => eventSubscriberEntity.subscriber,
   )
-  eventsSubscriber: EventSubscriberEntity[];
+  events: EventSubscriberEntity[];
 }

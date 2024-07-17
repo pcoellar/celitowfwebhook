@@ -9,6 +9,7 @@ export class EventEntity extends AuditableDataEntity {
   @OneToMany(
     () => EventSubscriberEntity,
     (eventSubscriberEntity) => eventSubscriberEntity.event,
+    { cascade: true },
   )
-  eventSubscribers: EventSubscriberEntity[];
+  subscribers: EventSubscriberEntity[];
 }

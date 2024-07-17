@@ -7,12 +7,12 @@ import { SubscriberEntity } from './subscriber.data.entity';
 export class EventSubscriberEntity extends AuditableDataEntity {
   @ManyToOne(
     () => EventEntity,
-    (eventEntity) => eventEntity.eventSubscribers,
+    (eventEntity) => eventEntity.subscribers,
   )
   event: EventEntity;
   @ManyToOne(
     () => SubscriberEntity,
-    (subscriberEntity) => subscriberEntity.eventsSubscriber,
+    (subscriberEntity) => subscriberEntity.events,
   )
   subscriber: SubscriberEntity;
   @Column('varchar', { length: 100, nullable: false })
