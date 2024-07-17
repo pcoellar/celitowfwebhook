@@ -3,11 +3,13 @@ import { IEventRepositoryService } from 'src/wfwebhook/data-access-layer/reposit
 import { EventEntity } from 'src/wfwebhook/entities/data-entities/event.data.entity';
 import { EventTypes } from 'src/wfwebhook/entities/enums/event-types.enum';
 import { ICallWebHooksServices } from './interfaces/call-webhooks.interface';
+import { IApiService } from 'src/common/business-logic-layer/services/api/interfaces/api.interface';
 
 @Injectable()
 export class CallWebHooksServices implements ICallWebHooksServices {
   constructor(
     private readonly eventRepositoryService: IEventRepositoryService,
+    private readonly apiService: IApiService,
   ) {}
   async execute(eventType: EventTypes, data: any) {
     const events: EventEntity[] =
@@ -23,6 +25,7 @@ export class CallWebHooksServices implements ICallWebHooksServices {
           console.log(
             `\n\nEvent: ${eventType}\nWebhook called: ${subscriber.webhook} \nData: ${JSON.stringify(data)}`,
           );
+          this.apiService.post(subscriber.webhook, data);
         });
       }
     });
