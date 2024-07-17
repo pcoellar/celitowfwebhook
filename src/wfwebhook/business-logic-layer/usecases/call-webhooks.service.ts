@@ -21,7 +21,7 @@ export class CallWebHooksServices implements ICallWebHooksServices {
       if (event.subscribers) {
         event.subscribers.forEach((subscriber) => {
           console.log(
-            `\n\nEvent: ${eventType}\nEmulated call of webhook: ${subscriber.webhook} \nData: ${JSON.stringify(data)}`,
+            `\n\nEvent: ${eventType}\nWebhook called: ${subscriber.webhook} \nData: ${JSON.stringify(data)}`,
           );
         });
       }
